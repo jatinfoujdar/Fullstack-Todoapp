@@ -1,12 +1,13 @@
 import './App.css';
-import { Forms } from './components/Forms';
+import { Form } from './components/Form';
 import { UserList } from './components/UserList';
+
 
 function App() {
   return (
     <div>
-   <Forms />
-   <UserList />
+      <Form />
+      <UserList />
     </div>
   );
 }

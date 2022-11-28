@@ -1,15 +1,30 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from "react";
+import axios from "axios";
 
-export const Forms = () => {
-    const handleSubmit = (event)=>{
-        //to store the value from frontend
+export const Form = () => {
+  // To Store the value from Frontend
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  console.log(userName, userEmail);
 
-        const [userName , setUserName]  = useState("")
-        const [userEmail , setUserEmail] = useState("")
-        
-     event.preventDefault();
-    }
+  // Function to send the Data
+  const submitData = async () => {
+    const data = {
+      name: userName,
+      email: userEmail,
+    };
+    const res = await axios.post("/createUser", data);
+    console.log(res);
+  };
+  // To handle the Default
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // To submit the Data
+    submitData();
+    // But Empty the previous Details
+    setUserName("");
+    setUserEmail("");
+  };
   return (
     <div>
     <form onSubmit={handleSubmit}>
